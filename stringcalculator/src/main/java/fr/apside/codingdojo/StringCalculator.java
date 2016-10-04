@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
+/**
+ * https://github.com/ardalis/kata-catalog/blob/master/katas/String%20Calculator.md
+ */
 public class StringCalculator {
 
 	public static int add(String string) throws NegativeValueException {
@@ -18,7 +21,7 @@ public class StringCalculator {
 
 	private static int sumString(String string) throws NegativeValueException {
 		List<Integer> list = Arrays.asList(string.split(getRegex(string))).stream().filter(s -> !s.isEmpty())
-				.map(Integer::valueOf).collect(Collectors.toList());
+				.map(Integer::valueOf).filter(val -> val <= 1000).collect(Collectors.toList());
 		
 		List<Integer> negatives = list.stream().filter(val-> val<0).collect(Collectors.toList());
 		

@@ -59,4 +59,9 @@ public class StringCalculatorTest {
 			assertThat(e).hasMessage("Negatives not allowed: [-4, -6, -7]");
 		}
 	}
+
+	@Test
+	public void stringWithBigNumberShallBeIgnored() throws Exception {
+		assertThat(StringCalculator.add("2,6,1001,7")).isEqualTo(15);
+	}
 }
