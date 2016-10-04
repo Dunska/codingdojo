@@ -42,4 +42,12 @@ public class StringCalculatorTest {
 		assertThat(StringCalculator.add("2\n2,8,10")).isEqualTo(22);
 		assertThat(StringCalculator.add("2\n2\n8")).isEqualTo(12);
 	}
+	
+	@Test
+	public void stringWithDefineDelimiterShouldReturnTheSum() throws Exception {
+				
+		assertThat(StringCalculator.add("//;\n2,6;0")).isEqualTo(8);
+		assertThat(StringCalculator.add("//apside\n2\n2,8apside10")).isEqualTo(22);
+		assertThat(StringCalculator.add("//|\n2|2|8")).isEqualTo(12);
+	}
 }
