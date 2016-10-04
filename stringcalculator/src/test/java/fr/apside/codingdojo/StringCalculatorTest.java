@@ -17,5 +17,18 @@ public class StringCalculatorTest {
 		
 	}
 	
+	@Test
+	public void stringWithOneValueShouldReturnThisValue() throws Exception {
+		
+		assertThat(StringCalculator.add("5")).isEqualTo(5);
+		
+	}
+	
+	@Test
+	public void stringWithTwoValuesShouldReturnTheSum() throws Exception {
+		
+		
+	}
+	
 	
 }
