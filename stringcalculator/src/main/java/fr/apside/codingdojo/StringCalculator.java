@@ -20,8 +20,8 @@ public class StringCalculator {
 	private static String getRegex(String string) {
 		String delimiter = ",|\\n|//";
 		
-		if()
-		delimiter = string.split("//|\n")[0];
+		if(string.startsWith("//")) 
+			delimiter += "|" + string.split("//|\n")[0];
 		
 		return delimiter;
 	}
