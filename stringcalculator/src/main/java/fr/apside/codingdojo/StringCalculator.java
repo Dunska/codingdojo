@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class StringCalculator {
 
-	public static int add(String string) {
+	public static int add(String string) throws NegativeValueException {
 		int result = 0;
 		if (!string.isEmpty()) {
 			result = sumString(string);
@@ -16,7 +16,7 @@ public class StringCalculator {
 		return result;
 	}
 
-	private static int sumString(String string) {
+	private static int sumString(String string) throws NegativeValueException {
 		List<Integer> list = Arrays.asList(string.split(getRegex(string))).stream().filter(s -> !s.isEmpty())
 				.map(Integer::valueOf).collect(Collectors.toList());
 		

@@ -1,6 +1,7 @@
 package fr.apside.codingdojo;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 import org.junit.Test;
 
@@ -51,10 +52,11 @@ public class StringCalculatorTest {
 
 	@Test
 	public void stringWithNegativeShouldThrowException() throws Exception {
-
-		
-		
-		assertThat(StringCalculator.add("//;\n2,6;0")).isEqualTo(8);
-		assertThat(StringCalculator.add("//apside\n2\n2,8apside10")).isEqualTo(22);
+		try {
+			StringCalculator.add("1,2,3,-4,5,-6,-7");
+			fail("Fail !");
+		} catch (NegativeValueException e) {
+			assertThat(e).hasMessage("Negatives not allowed: [-4, -6, -7]");
+		}
 	}
 }
