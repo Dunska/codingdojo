@@ -6,8 +6,15 @@ public class StringCalculator {
 	public static int add(String string) {
 		int result = 0;
 		if(!string.isEmpty()) {
-			result = Integer.valueOf(string);
+			result = sumString(string);
 		}
+		
+		return result;
+	}
+
+	private static int sumString(String string) {
+		int result;
+		result = Integer.valueOf(string);
 		return result;
 	}
 

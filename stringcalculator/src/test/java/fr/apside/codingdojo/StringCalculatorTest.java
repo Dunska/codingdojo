@@ -26,8 +26,9 @@ public class StringCalculatorTest {
 	
 	@Test
 	public void stringWithTwoValuesShouldReturnTheSum() throws Exception {
-		
-		
+				
+		assertThat(StringCalculator.add("2,6")).isEqualTo(8);
+		assertThat(StringCalculator.add("2,2")).isEqualTo(4);
 	}
 	
 	
