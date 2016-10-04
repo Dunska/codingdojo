@@ -14,7 +14,7 @@ public class StringCalculator {
 	}
 
 	private static int sumString(String string) {
-		return Arrays.asList(string.split(",")).stream().map(Integer::valueOf).reduce(0, (a, b) -> a + b);
+		return Arrays.asList(string.split(",|\\n")).stream().map(Integer::valueOf).reduce(0, (a, b) -> a + b);
 	}
 
 }

@@ -1,10 +1,6 @@
 package fr.apside.codingdojo;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
@@ -31,5 +27,19 @@ public class StringCalculatorTest {
 		assertThat(StringCalculator.add("2,2")).isEqualTo(4);
 	}
 	
-	
+
+	@Test
+	public void stringWithMultiValuesShouldReturnTheSum() throws Exception {
+				
+		assertThat(StringCalculator.add("2,6,0")).isEqualTo(8);
+		assertThat(StringCalculator.add("2,2,8,10")).isEqualTo(22);
+	}
+
+	@Test
+	public void stringWithMultiValuesMultiSepShouldReturnTheSum() throws Exception {
+				
+		assertThat(StringCalculator.add("2,6\n0")).isEqualTo(8);
+		assertThat(StringCalculator.add("2\n2,8,10")).isEqualTo(22);
+		assertThat(StringCalculator.add("2\n2\n8")).isEqualTo(12);
+	}
 }
