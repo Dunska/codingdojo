@@ -14,7 +14,7 @@ public class StringCalculator {
 	}
 
 	private static int sumString(String string) {
-		return Arrays.asList(string.split(getRegex(string))).stream().map(Integer::valueOf).reduce(0, (a, b) -> a + b);
+		return Arrays.asList(string.split(getRegex(string))).stream().filter(s -> !s.isEmpty()).map(Integer::valueOf).reduce(0, (a, b) -> a + b);
 	}
 
 	private static String getRegex(String string) {
