@@ -21,7 +21,7 @@ public class StringCalculator {
 		String delimiter = ",|\\n|//";
 		
 		if(string.startsWith("//")) 
-			delimiter += "|" + string.split("//|\n")[0];
+			delimiter += "|" + string.replaceFirst("//", "").split("\\n")[0];
 		
 		return delimiter;
 	}
