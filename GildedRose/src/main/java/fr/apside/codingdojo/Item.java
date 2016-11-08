@@ -1,4 +1,4 @@
-package  fr.apside.codingdojo;
+package fr.apside.codingdojo;
 
 public class Item {
 
