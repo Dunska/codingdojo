@@ -14,35 +14,45 @@ class GildedRose {
 
 	public void updateQuality() {
 		for (int i = 0; i < items.length; i++) {
-			if (!items[i].name.equals(SULFURAS)) {
-				if (items[i].name.equals(AGED_BRIE)) {
-					incrementItemQuality(items[i]);
-				} else if (items[i].name.equals(BACKSTAGE_PASS)) {
-					incrementItemQuality(items[i]);
+			if (items[i].name.equals(SULFURAS)) {
+				continue;
+			}
 
-					if (items[i].sellIn < 11) {
-						incrementItemQuality(items[i]);
-					}
+			items[i].sellIn = items[i].sellIn - 1;
 
-					if (items[i].sellIn < 6) {
-						incrementItemQuality(items[i]);
-					}
-				} else {
-					decrementItemQuality(items[i]);
+			if (items[i].name.equals(AGED_BRIE)) {
+				handleBrie(i);
+
+			} else if (items[i].name.equals(BACKSTAGE_PASS)) {
+				incrementItemQuality(items[i]);
+
+				if (items[i].sellIn < 10) {
+					incrementItemQuality(items[i]);
 				}
 
-				items[i].sellIn = items[i].sellIn - 1;
+				if (items[i].sellIn < 5) {
+					incrementItemQuality(items[i]);
+				}
 
 				if (items[i].sellIn < 0) {
-					if (items[i].name.equals(AGED_BRIE)) {
-						incrementItemQuality(items[i]);
-					} else if (items[i].name.equals(BACKSTAGE_PASS)) {
-						items[i].quality = 0;
-					} else {
-						decrementItemQuality(items[i]);
-					}
+					items[i].quality = 0;
+				}
+			} else {
+				decrementItemQuality(items[i]);
+
+				if (items[i].sellIn < 0) {
+					decrementItemQuality(items[i]);
 				}
 			}
+
+		}
+	}
+
+	private void handleBrie(int i) {
+		incrementItemQuality(items[i]);
+
+		if (items[i].sellIn < 0) {
+			incrementItemQuality(items[i]);
 		}
 	}
 
