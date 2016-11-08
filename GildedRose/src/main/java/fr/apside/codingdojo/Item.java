@@ -18,6 +18,9 @@ public class Item {
 	}
 
 	public void handle() {
+		
+		this.sellIn = this.sellIn - 1;
+		
 		decrementItemQuality();
 
 		if (this.sellIn < 0) {

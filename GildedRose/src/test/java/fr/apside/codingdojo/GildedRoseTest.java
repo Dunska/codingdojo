@@ -22,9 +22,9 @@ public class GildedRoseTest {
 
 	@Test
 	public void goldenTest2() {
-		Item[] items = new Item[] { new Item("Aged Brie", 42, 5), new Item("foo", 10, 20),
-				new Item("Backstage passes to a TAFKAL80ETC concert", 16, 4),
-				new Item("Sulfuras, Hand of Ragnaros", 100, 12) };
+		Item[] items = new Item[] { new AgedBrieItem(42, 5), new Item("foo", 10, 20),
+				new BackstagePassItem(16, 4),
+				new SulfurasItem(100, 12) };
 		GildedRose app = new GildedRose(items);
 		app.updateQuality();
 
@@ -81,7 +81,7 @@ public class GildedRoseTest {
 
 	@Test
 	public void goldenTest3() {
-		Item[] items = new Item[] { new Item("Aged Brie", 1, 40) };
+		Item[] items = new Item[] { new AgedBrieItem(1, 40) };
 		GildedRose app = new GildedRose(items);
 		app.updateQuality();
 		app.updateQuality();
