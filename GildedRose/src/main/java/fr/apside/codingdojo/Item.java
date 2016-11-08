@@ -2,20 +2,44 @@ package fr.apside.codingdojo;
 
 public class Item {
 
-    public String name;
+	private static final int MIN_QUALITY = 0;
+	private static final int MAX_QUALITY = 50;
 
-    public int sellIn;
+	public String name;
 
-    public int quality;
+	public int sellIn;
 
-    public Item(String name, int sellIn, int quality) {
-        this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
-    }
+	public int quality;
 
-   @Override
-   public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
-    }
+	public Item(String name, int sellIn, int quality) {
+		this.name = name;
+		this.sellIn = sellIn;
+		this.quality = quality;
+	}
+
+	public void handle() {
+		decrementItemQuality();
+
+		if (this.sellIn < 0) {
+			decrementItemQuality();
+		}
+
+	}
+
+	protected void decrementItemQuality() {
+		if (this.quality > MIN_QUALITY) {
+			this.quality--;
+		}
+	}
+
+	protected void incrementItemQuality() {
+		if (this.quality < MAX_QUALITY) {
+			this.quality++;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return this.name + ", " + this.sellIn + ", " + this.quality;
+	}
 }
