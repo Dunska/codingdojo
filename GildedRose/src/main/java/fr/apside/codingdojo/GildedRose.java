@@ -15,33 +15,23 @@ class GildedRose {
 	public void updateQuality() {
 		for (int i = 0; i < items.length; i++) {
 			if (items[i].name.equals(AGED_BRIE)) {
-				if (items[i].quality < MAX_QUALITY) {
-					items[i].quality = items[i].quality + 1;
-				}
+					incrementItemQuality(items[i]);
 			} else if (items[i].name.equals(BACKSTAGE_PASS)) {
-				if (items[i].quality < MAX_QUALITY) {
-					items[i].quality = items[i].quality + 1;
+					incrementItemQuality(items[i]);
 
 					if (items[i].sellIn < 11) {
-						if (items[i].quality < MAX_QUALITY) {
-							items[i].quality = items[i].quality + 1;
-						}
+							incrementItemQuality(items[i]);
 					}
 
 					if (items[i].sellIn < 6) {
-						if (items[i].quality < MAX_QUALITY) {
-							items[i].quality = items[i].quality + 1;
-						}
+							incrementItemQuality(items[i]);
 					}
+			} 
+			else if (!items[i].name.equals(SULFURAS)) {
+				if (items[i].quality > MIN_QUALITY) {
+					decrementItemQuality(items[i]);
 				}
 			}
-			else {
-				if (items[i].quality > MIN_QUALITY) {
-					if (!items[i].name.equals(SULFURAS)) {
-						items[i].quality = items[i].quality - 1;
-					}
-				}
-			}  
 
 			if (!items[i].name.equals(SULFURAS)) {
 				items[i].sellIn = items[i].sellIn - 1;
@@ -49,17 +39,25 @@ class GildedRose {
 
 			if (items[i].sellIn < 0) {
 				if (items[i].name.equals(AGED_BRIE)) {
-					if (items[i].quality < MAX_QUALITY) {
-						items[i].quality = items[i].quality + 1;
-					}
+						incrementItemQuality(items[i]);
 				} else if (items[i].name.equals(BACKSTAGE_PASS)) {
-					items[i].quality = items[i].quality - items[i].quality;
+					items[i].quality = 0;
 				} else if (!items[i].name.equals(SULFURAS)) {
 					if (items[i].quality > MIN_QUALITY) {
-						items[i].quality = items[i].quality - 1;
+						decrementItemQuality(items[i]);
 					}
 				}
 			}
+		}
+	}
+
+	private void decrementItemQuality(Item item) {
+		item.quality--;
+	}
+
+	private void incrementItemQuality(Item item) {
+		if (item.quality < MAX_QUALITY) {
+			item.quality++;
 		}
 	}
 }
